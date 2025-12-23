@@ -13,13 +13,16 @@ while game_is_on:
         print("\nplease enter a valid number (1,  3)")
     else:
         if game.user_move(user_index=(user_row, user_col)):
-            game.computer_move()
-            game.desplay()
-            check = game.check_winner()
-            if check:
+            if game.computer_move():
+                game.desplay()
+                if game.check_winner():
+                    if  game.check_winner() == "X":
+                        print("\n you won! \n")    
+                    elif game.check_winner() == "O":
+                        print("computer won!")
+                    game_is_on = False
+            else:
                 game_is_on = False
-            elif check == False and len(game.spots_left) == 0:
-                print("it's a draw please play the game again!")
         else:
             print("please enter a valid untaken index for ur Next move: ")
             continue
