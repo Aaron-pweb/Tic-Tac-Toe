@@ -7,12 +7,12 @@ game = TicGame()
 game_is_on = True
 
 while game_is_on:
-    user_row = int(input('enter a row number (1-3): ')) -1
-    user_col = int(input('enter a col number (1-3): ')) -1
+    user_row = int(input('enter a row number (1-3): ')) 
+    user_col = int(input('enter a col number (1-3): ')) 
     if user_col > 3 or user_row > 3:
         print("\nplease enter a valid number (1,  3)")
     else:
-        if game.user_move(user_index=(user_row, user_col)):
+        if game.user_move(user_index=(user_row - 1, user_col - 1)):
             if game.computer_move():
                 game.desplay()
                 if game.check_winner():
